@@ -94,47 +94,34 @@ public class Stub {
 	}
 	
 	
-	public static int binarySearch(int numberToFind,
-			ArrayList<Integer> ascendingList){
+	public static int binarySearch(ArrayList<Integer> a, int target) {
 		
-		// Finds number in list and returns index
-		// Algorithm from TutorialsPoint.com
-		
-		// input
-		int arrayLength = ascendingList.size();
-		int midpoint;
-		int upperBound = ascendingList.size();;
-		int lowerBound = 0;
-		// process
-		
-			midpoint = lowerBound + (upperBound - lowerBound)/2;
-			
-			if(ascendingList.get(midpoint) < numberToFind){
-				
-				ArrayList<Integer> subList = new ArrayList<Integer>(ascendingList.subList(midpoint,upperBound));;
-				total.add(upperBound - binarySearch(numberToFind, subList));
+	    return binarySearch(a, 0, a.size()-1, target);
+	    
+	}
 
-				return midpoint;
-				
-			}
-			
-			else if(ascendingList.get(midpoint) > numberToFind){
-				ArrayList<Integer> subList = new ArrayList<Integer>(ascendingList.subList(lowerBound,midpoint));
-				total.add(upperBound-(-1)*binarySearch(numberToFind, subList));
+	public static int binarySearch(ArrayList<Integer> a, int start, int end, int target) {
+	    
+		int middle = (start + end) / 2;
+	    
+		if(end < start) {
+	        
+			return -1;
+	        
+	    } 
 
-				return midpoint;
-				
-			}
-			
-			else if(ascendingList.get(midpoint) == numberToFind){
-				System.out.println("The number is number " + (midpoint + 1) + 
-						" in the list");
-
-				return midpoint;
-				
-			}else{
-				return -1;
-			}
+	    if(target==a.get(middle)) {
+	        
+	    	return middle + 1;
+	        
+	    } else if(target<a.get(middle)) {
+	    
+	    	return binarySearch(a, start, middle - 1, target);
+	    	
+	    } else {
+	        
+	    	return binarySearch(a, middle + 1, end, target);
+	    }
 	}
 	
 	
@@ -189,20 +176,11 @@ public class Stub {
 		//initializing
 		
 		System.out.println("*Generating List* \n");
-			valueList.add(	239);valueList.add(-68);
-		
-			valueList.add(	193);valueList.add(	1);
-			valueList.add(	-45);valueList.add(	465);valueList.add(	29);
-		valueList.add(	69);
-	
-		valueList.add(	196);
-		
-		valueList.add(-178);
-	valueList.add(	435);
+
 	printList(valueList);
-		//for(int counter = 0; counter < ELEMENTS_IN_ARRAY; counter ++ ){
+	///	for(int counter = 0; counter < ELEMENTS_IN_ARRAY; counter ++ ){
 			
-	//		valueList.add(ThreadLocalRandom.current().nextInt(minRange,
+		///valueList.add(ThreadLocalRandom.current().nextInt(minRange,
 	//				maxRange + 1));
 	//		
 	//		System.out.println(valueList.get(counter));
@@ -238,7 +216,7 @@ public class Stub {
 				intUserInput = checkForInt("\n What number would you like to "
 						+ "find the order of.");	
 				
-				System.out.println(binarySearch(intUserInput,valueList));
+				System.out.println(binarySearch(valueList,intUserInput));
 				
 			}
 			
