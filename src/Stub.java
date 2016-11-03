@@ -14,7 +14,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Stub {
 	
-	private static ArrayList<Integer> total = new ArrayList<Integer>();
 	
 	public static void printList(ArrayList<Integer> listOfInt){
 		// Prints list of numbers in the array
@@ -169,7 +168,7 @@ public class Stub {
 		int maxRange = 500;
 		int minRange = -500;
 		int intUserInput = 0;
-		final int ELEMENTS_IN_ARRAY = 10;
+		final int ELEMENTS_IN_ARRAY = 250 ;
 		
 		String strUserInput = "";
 		
@@ -177,23 +176,26 @@ public class Stub {
 		
 		System.out.println("*Generating List* \n");
 
-	printList(valueList);
-	///	for(int counter = 0; counter < ELEMENTS_IN_ARRAY; counter ++ ){
+		printList(valueList);
+	
+		for(int counter = 0; counter < ELEMENTS_IN_ARRAY; counter ++ ){
 			
-		///valueList.add(ThreadLocalRandom.current().nextInt(minRange,
-	//				maxRange + 1));
-	//		
-	//		System.out.println(valueList.get(counter));
-	//		
-	//	}
-	//	
+		valueList.add(ThreadLocalRandom.current().nextInt(minRange,
+					maxRange + 1));
+			
+			System.out.println(valueList.get(counter));
+			
+		}
+		
 		System.out.println();
 		
 		System.out.println("*Sorting List* \n");
 	
 		
 		valueList = bubbleSort(valueList);
+		
 			printList(valueList);
+			
 		// User actions
 		System.out.println("Enter 'search' to find the order of a number in "
 				+ "the list.");
